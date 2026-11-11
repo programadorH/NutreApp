@@ -4,12 +4,31 @@ import java.util.UUID;
 
 import com.example.NutreAPP.models.helpers.Categoria;
 
-public class Video {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity 
+public class Video {
+    @Id 
+    @GeneratedValue  (strategy = GenerationType.UUID)
     private UUID id;
+
+    @Column (name="titulo", nullable = false, unique = false, length = 100)
     private String titulo;
+
+    @Column (name="descripcion", nullable = false, unique = false, length = 300)
     private String descripcion;
+
+    @Column (name="url", nullable = false, unique = false, length = 100)
     private String url;
+
+    @Enumerated (EnumType.STRING)
+    @Column (name = "categoria", nullable = false, unique = false)
     private Categoria categoria;
     
     public Video() {
