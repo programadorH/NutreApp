@@ -11,8 +11,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity 
+@Table (name="videos")
 public class Video {
     @Id 
     @GeneratedValue  (strategy = GenerationType.UUID)
