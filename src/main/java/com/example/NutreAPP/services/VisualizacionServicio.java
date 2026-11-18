@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.NutreAPP.models.Video;
 import com.example.NutreAPP.models.Visualizacion;
 import com.example.NutreAPP.repositories.IVisualizacionRepositorio;
 

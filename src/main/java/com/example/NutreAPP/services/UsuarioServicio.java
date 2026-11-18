@@ -16,14 +16,14 @@ import com.example.NutreAPP.repositories.IUsuarioRepositorio;
 @Service
 public class UsuarioServicio {
 
-    private final repositories.IVideoRepositorio IVideoRepositorio;
+    private final repositorios.IVideoRepositorio IVideoRepositorio;
     //Para cocinar necesito las recetas
     //para programar los servicios necesito los repositorios
     //INYECCION DE DEPENDENCIAS
     @Autowired
     private IUsuarioRepositorio repositorio;
 
-    UsuarioServicio(repositories.IVideoRepositorio IVideoRepositorio) {
+    UsuarioServicio(repositorios.IVideoRepositorio IVideoRepositorio) {
         this.IVideoRepositorio = IVideoRepositorio;
     }
 
@@ -53,7 +53,7 @@ public class UsuarioServicio {
     // metodo para modificar
     public Usuario modificar(UUID id, Usuario datos){
 
-         Optional<Usuario> usuarioBuscado =this.repositorio.findById(id);
+        Optional<Usuario> usuarioBuscado =this.repositorio.findById(id);
         if(!usuarioBuscado.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
         }else{
@@ -72,9 +72,20 @@ public class UsuarioServicio {
 
     }
 
+     //metodo para eliminar
+    public boolean eliminar(UUID id){
+
+        Optional<Usuario> usuarioBuscado =this.repositorio.findById(id);
+        if(!usuarioBuscado.isPresent()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
+        }else{
+            this.repositorio.deleteById(id);
+            return true;
 
 
-    //metodo para eliminar
+    }
+
+
 
     //metodo para buscar por departamento yol
     //metodo para buscar por correo
