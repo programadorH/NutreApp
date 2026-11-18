@@ -19,11 +19,13 @@ public class VisualizacionServicio {
     @Autowired
     private IVisualizacionRepositorio repositorio;
 
+
     public Visualizacion guardar(Visualizacion datos){
         return this.repositorio.save(datos);
     }
 
-     public Visualizacion buscarPorId(UUID id){
+
+    public Visualizacion buscarPorId(UUID id){
         Optional<Visualizacion> visualizacionBuscado =this.repositorio.findById(id);
         if(!visualizacionBuscado.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
@@ -33,7 +35,7 @@ public class VisualizacionServicio {
     } 
 
 
-    public List<Visualizacion> buscarTodos(){
+    public  List<Visualizacion> buscarTodos(){
         return this.repositorio.findAll();
     }
 

@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.NutreAPP.models.Usuario;
+
 import com.example.NutreAPP.models.Video;
 import com.example.NutreAPP.repositories.IVideoRepositorio;
 
@@ -36,6 +36,23 @@ public class VideoServicio {
     public List<Video> buscarTodos(){
         return this.repositorio.findAll();
     }
+
+    public Video modificar (UUID id, Video datos){
+        Optional<Video> videoBuscado =this.repositorio.findById(id);
+        if(!videoBuscado.isPresent()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
+        }else{
+            Video videoEncontrado=videoBuscado.get();
+            videoEncontrado.setTitulo(datos.getTitulo());
+            videoEncontrado.setDescripcion(datos.getDescripcion());
+            return this.repositorio.save(videoEncontrado);
+        }
+
+
+    }
+
+
+    
 
 
 
