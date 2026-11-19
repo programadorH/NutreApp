@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.NutreAPP.models.Usuario;
 import com.example.NutreAPP.repositories.IUsuarioRepositorio;
+import com.example.NutreAPP.validations.UsuarioValidacion;
 
 @Service
 public class UsuarioServicio {
@@ -19,10 +20,20 @@ public class UsuarioServicio {
     @Autowired
     private IUsuarioRepositorio repositorio;
 
+    @Autowired
+    private UsuarioValidacion validacion;
+
+
     //metodo guardar
     public Usuario guardUsuario(Usuario datos){
+        this.validacion.validarCorreo(datos.getCorreo());
+        this.validacion.validarUsuarioNuevo(datos);
+        this.validacion.validarNombre(datos.getNombre());
+        this.validacion.validarContraseña(datos.getContrasena_hash());
         return this.repositorio.save(datos);
     }
+
+    
     // metodo buscar por id
     public Usuario buscarPorId(UUID id){
         Optional<Usuario>usuarioBuscado = this.repositorio.findById(id);
