@@ -25,13 +25,16 @@ public class UsuarioServicio {
 
 
     //metodo guardar
-    public Usuario guardUsuario(Usuario datos){
-        this.validacion.validarCorreo(datos.getCorreo());
-        this.validacion.validarUsuarioNuevo(datos);
-        this.validacion.validarNombre(datos.getNombre());
-        this.validacion.validarContraseña(datos.getContrasena_hash());
-        return this.repositorio.save(datos);
-    }
+   public Usuario guardar(Usuario datos){
+    this.validacion.validarTextoObligatorio(datos.getNombre(), "nombre");
+    this.validacion.validarTextoObligatorio(datos.getCorreo(), "correo");
+    this.validacion.validarTextoObligatorio(datos.getContrasena_hash(), "contraseña");
+    this.validacion.validarNombre(datos.getNombre());
+    this.validacion.validarCorreo(datos.getCorreo());
+    this.validacion.validarContraseña(datos.getContrasena_hash());
+    this.validacion.validarUsuarioNuevo(datos);
+    return this.repositorio.save(datos);
+}
 
     
     // metodo buscar por id

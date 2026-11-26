@@ -24,30 +24,48 @@ public class Visualizacion {
     @GeneratedValue  (strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column (name="fecha_visualizacion", nullable = false, unique = false, length = 100)
-    private LocalDate fecha_visualizacion;
+    @Column (name="fechaVisualizacion", nullable = false, unique = false, length = 100)
+    private LocalDate fechaVisualizacion;
 
     @Column (name="completado", nullable = false, unique = false )
     private Boolean completado;
 
     //creando relaciones
     @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonBackReference(value = "usuario-visualizacion")
+    @JoinColumn(name = "idUsuario")
+    @JsonBackReference(value = "usuarioVisualizacion")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonBackReference(value = "video-visualizacion")
+    @JoinColumn(name = "idVideo")
+    @JsonBackReference(value = "videoVisualizacion")
     private Video video;
 
     
+
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
+    }
+
     public Visualizacion() {
     }
 
-    public Visualizacion(UUID id, LocalDate fecha_visualizacion, Boolean completado) {
+    public Visualizacion(UUID id, LocalDate fechaVisualizacion, Boolean completado) {
         this.id = id;
-        this.fecha_visualizacion = fecha_visualizacion;
+        this.fechaVisualizacion = fechaVisualizacion;
         this.completado = completado;
     }
 
@@ -59,12 +77,12 @@ public class Visualizacion {
         this.id = id;
     }
 
-    public LocalDate getFecha_visualizacion() {
-        return fecha_visualizacion;
+    public LocalDate getFechaVisualizacion() {
+        return fechaVisualizacion;
     }
 
-    public void setFecha_visualizacion(LocalDate fecha_visualizacion) {
-        this.fecha_visualizacion = fecha_visualizacion;
+    public void setFechaVisualizacion(LocalDate fechaVisualizacion) {
+        this.fechaVisualizacion = fechaVisualizacion;
     }
 
     public Boolean getCompletado() {

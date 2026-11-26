@@ -40,7 +40,7 @@ public class Usuario {
     @Column (name = "rol", nullable = false, unique = false)
     private Rol rol;
 
-    @Column (name = "contraseña_hash", nullable = false, unique = false)
+    @Column (name = "contrasena_hash", nullable = false, unique = false)
     private String contrasena_hash;
 
     @OneToMany(mappedBy = "usuario")
@@ -92,6 +92,12 @@ public class Usuario {
     }
     public void setContrasena_hash(String contrasena_hash) {
         this.contrasena_hash = contrasena_hash;
+    }
+    public List<Visualizacion> getVisualizaciones() {
+        return visualizaciones;
+    }
+    public void setVisualizaciones(List<Visualizacion> visualizaciones) {
+        this.visualizaciones = visualizaciones;
     }
 
     

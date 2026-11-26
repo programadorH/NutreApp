@@ -90,6 +90,14 @@ public class Video {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public List<Visualizacion> getVisualizaciones() {
+        return visualizaciones;
+    }
+
+    public void setVisualizaciones(List<Visualizacion> visualizaciones) {
+        this.visualizaciones = visualizaciones;
+    }
     
     
 

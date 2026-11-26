@@ -19,7 +19,7 @@ public class UsuarioValidacion {
     //1. validar que un campo sea obligatorio
     public void validarTextoObligatorio(String valor, String campo){
         if(valor==null || valor.isBlank()){
-            throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"El campo"+campo+"es obligatorio");
+            throw new  ResponseStatusException(HttpStatus.BAD_REQUEST," El campo " + campo + " es obligatorio ");
 
         }
 
@@ -42,8 +42,8 @@ public class UsuarioValidacion {
 
     //4. validar que la contraseña tengo minimo 8 caracteres
     public void validarContraseña(String contraseña){
-        if(contraseña.length()<8){
-            throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"La contraseña debe tener mas de 8 caracteres");
+        if(contraseña.length()<=8){
+            throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"La contraseña debe tener al menos 8 caracteres");
         }
     }
 
@@ -53,7 +53,7 @@ public class UsuarioValidacion {
     //1. validar que el correo de un usuario que se quiere registrar no exista en la BD
     public void validarUsuarioNuevo(Usuario datos){
         String correoEntregado=datos.getCorreo();
-        if(this.repositorio.existByCorreo(correoEntregado)){
+        if(this.repositorio.existsByCorreo(correoEntregado)){
             throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"El correo entregado ya existe en la BD");
         }
     }

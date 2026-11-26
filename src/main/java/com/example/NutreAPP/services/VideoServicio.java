@@ -16,7 +16,7 @@ public class VideoServicio {
     @Autowired
     private IVideoRepositorio repositorio;
     
-    public Video guarVideo(Video datos){
+    public Video guardarVideo(Video datos){
         return this.repositorio.save(datos);
     }
 

@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.NutreAPP.models.Video;
+import com.example.NutreAPP.models.helpers.Categoria;
 
 
 @Repository
 public interface IVideoRepositorio extends JpaRepository<Video, UUID> {
 
     // buscar videos por categoria
-    List<Video> findByCategoria(String categoria);
+    List<Video> findByCategoria(Categoria categoria);
 
     // buscar videos por titulo (ignora mayúsculas/minúsculas)
     List<Video> findByTituloIgnoreCase(String titulo);
@@ -25,5 +26,5 @@ public interface IVideoRepositorio extends JpaRepository<Video, UUID> {
     List<Video> findByUrl(String url);
 
     // buscar videos por titulo y categoria
-    List<Video> findByTituloAndCategoria(String titulo, String categoria);
+    List<Video> findByTituloAndCategoria(String titulo, Categoria categoria);
 }
